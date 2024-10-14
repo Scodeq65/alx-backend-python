@@ -3,6 +3,7 @@
 This module contains a function 'concat' that concatenates two strings.
 """
 
+
 def concat(str1: str, str2: str) -> str:
     """
     Concatenates two strings and returns the result.
