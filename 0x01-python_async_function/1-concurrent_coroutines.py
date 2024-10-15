@@ -4,6 +4,7 @@ Module 1-concurrent_coroutines
 This module defines a coroutine that spawns multiple wait_random coroutines.
 """
 
+
 import asyncio
 from typing import List
 wait_random = __import__('0-basic_async_syntax').wait_random
@@ -22,7 +23,6 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     """
     delays = []
     tasks = []
-
 
     for _ in range(n):
         task = asyncio.create_task(wait_random(max_delay))
