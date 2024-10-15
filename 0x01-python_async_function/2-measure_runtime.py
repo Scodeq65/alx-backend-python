@@ -6,8 +6,8 @@ This module defines a function to measure the execution time of wait_n.
 
 import asyncio
 import time
-from typing import Callable
-wait_n = __import__('1_concurrent_coroutines').wait_n
+wait_n = __import__('1-concurrent_coroutines').wait_n
+
 
 def measure_time(n: int, max_delay: int) -> float:
     """
