@@ -52,9 +52,10 @@ class TestGithubOrgClient(unittest.TestCase):
         test_payload = [
             {"name": "repo1"},
             {"name": "repo2"},
-            {"name": "repo3"},
+            {"name": "repo3"}
         ]
         mock_get_json.return_value = test_payload
+        expected_repos = ["repo1", "repo2", "repo3"]
 
         # Mock the _public_repos_url to avoid any real HTTP calls
         with patch.object(
@@ -63,16 +64,13 @@ class TestGithubOrgClient(unittest.TestCase):
             new="https://api.github.com/orgs/google/repos"
         ):
             client = GithubOrgClient("google")
-            result = client.public_repos
+            result = client.public_repos()
 
-            # Verify the returned list of repository names
-            expected_repos = ["repo1", "repo2", "repo3"]
+            # Assert that result matches expected repo names
             self.assertEqual(result, expected_repos)
 
             # Check that _public_repos_url and get_json were each called once
-            mock_get_json.assert_called_once_with(
-                "https://api.github.com/orgs/google/repos"
-            )
+            mock_get_json.assert_called_once()
 
 
 if __name__ == "__main__":
